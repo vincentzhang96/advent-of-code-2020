@@ -1,8 +1,14 @@
 fn main() {
+    part_1();
+    part_2();
+}
+
+fn part_1() {
+    println!("Part 1");
     let list = INPUT.split("\n");
     let mut valid = 0;
     for entry in list {
-        if check_password(entry) {
+        if check_password_2(entry) {
             valid += 1;
         }
     }
@@ -10,7 +16,20 @@ fn main() {
     println!("There are {} valid passwords", valid);
 }
 
-fn check_password(s: &str) -> bool {
+fn part_2() {
+    println!("Part 2");
+    let list = INPUT.split("\n");
+    let mut valid = 0;
+    for entry in list {
+        if check_password_2(entry) {
+            valid += 1;
+        }
+    }
+    
+    println!("There are {} valid passwords", valid);
+}
+
+fn check_password_1(s: &str) -> bool {
     let split: Vec<&str> = s.split(":").collect();
     let (min, max, letter) = get_rule(split[0]);
     let pw = split[1].trim();
@@ -28,6 +47,12 @@ fn check_password(s: &str) -> bool {
     }
 
     count >= min && count <= max
+}
+
+fn check_password_2(s: &str) -> bool {
+    // TODO
+
+    false
 }
 
 fn get_rule(s: &str) -> (i32, i32, char) {
