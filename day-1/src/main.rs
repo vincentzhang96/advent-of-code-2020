@@ -42,11 +42,12 @@ fn part_2() {
         for j in (i + 1)..len {
             let v2 = INPUT[j];
             // Skip combinations that already exceed our target
-            if v1 + v2 > 2020 {
+            if v1 + v2 >= 2020 {
                 continue;
             }
             
             for k in 0..len {
+                // Technically don't need this, and this could be removed to avoid an extra branch
                 if k == i || k == j {
                     continue;
                 }
