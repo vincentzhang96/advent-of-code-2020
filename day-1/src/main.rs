@@ -1,5 +1,5 @@
 
-static input: [i32; 200] = [
+static INPUT: [i32; 200] = [
     1977,1802,1856,1309,2003,1854,1898,1862,1857,542,1616,1599,1628,1511,1848,1623,1959,1693,1444,1211,1551,1399,
     1855,1538,1869,1664,1719,1241,1875,1733,1547,1813,1531,1773,624,1336,1897,1179,1258,1205,1727,1364,1957,540,
     1970,1273,1621,1964,1723,1699,1847,1249,1254,1644,1449,1794,1797,1713,1534,1202,1951,1598,1926,1865,1294,1893,
@@ -13,16 +13,27 @@ static input: [i32; 200] = [
 ];
 
 fn main() {
+    part_1();
+    part_2();
+}
+
+fn part_1() {
+    println!("Part 1");
     // Brute force search
-    let len = input.len();
+    let len = INPUT.len();
     for i in 0..len {
-        let v1 = input[i];
+        let v1 = INPUT[i];
         for j in (i + 1)..len {
-            let v2 = input[j];
+            let v2 = INPUT[j];
             if v1 + v2 == 2020 {
                 println!("The numbers {} and {} sum to 2020 and multiply to {}", v1, v2, v1 * v2);
                 return;
             }
         }
     }
+}
+
+fn part_2() {
+    println!("Part 2");
+    
 }
