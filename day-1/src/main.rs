@@ -35,5 +35,28 @@ fn part_1() {
 
 fn part_2() {
     println!("Part 2");
-    
+    // Smarter brute force search
+    let len = INPUT.len();
+    for i in 0..len {
+        let v1 = INPUT[i];
+        for j in (i + 1)..len {
+            let v2 = INPUT[j];
+            // Skip combinations that already exceed our target
+            if v1 + v2 > 2020 {
+                continue;
+            }
+            
+            for k in 0..len {
+                if k == i || k == j {
+                    continue;
+                }
+                
+                let v3 = INPUT[k];
+                if v1 + v2 + v3 == 2020 {
+                    println!("The numbers {}, {}, and {} sum to 2020 and multiply to {}", v1, v2, v3, v1 * v2 * v3);
+                    return;
+                }
+            }
+        }
+    }
 }
