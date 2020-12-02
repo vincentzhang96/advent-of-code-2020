@@ -8,7 +8,7 @@ fn part_1() {
     let list = INPUT.split("\n");
     let mut valid = 0;
     for entry in list {
-        if check_password_2(entry) {
+        if check_password_1(entry) {
             valid += 1;
         }
     }
@@ -50,9 +50,15 @@ fn check_password_1(s: &str) -> bool {
 }
 
 fn check_password_2(s: &str) -> bool {
-    // TODO
-
-    false
+    let split: Vec<&str> = s.split(":").collect();
+    let (a, b, letter) = get_rule(split[0]);
+    let pw = split[1].trim();
+    let chars: Vec<char> = pw.chars().collect();
+    let has_a = chars[(a - 1) as usize] == letter;
+    let has_b = chars[(b - 1) as usize] == letter;
+    
+    // Only true if A and B are not both true and at least one is true
+    has_a ^ has_b && (has_a || has_b)
 }
 
 fn get_rule(s: &str) -> (i32, i32, char) {
